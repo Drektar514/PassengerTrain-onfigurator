@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace PassengerTrainСonfigurator
+{
+  class Vagon
+    {
+        public int MaxPlace { get; private set; }
+        public string Name { get; private set; }
+        
+        public Vagon() { }
+        
+        public Vagon(string name, int maxPlace)
+        {
+            Name = name;
+            MaxPlace = maxPlace;
+        }
+        
+        public void RendererVagon(ref int passangers)
+        {
+            if (passangers >= 50)
+            {
+               Name = "|__B__|";
+               MaxPlace = 50;
+               passangers -= MaxPlace;
+            }
+            
+            else if (passangers >= 25 && passangers <= 50)
+            {
+                Name = "|_С_|";
+                MaxPlace = 25;
+                passangers -= MaxPlace;
+            }
+            
+            else
+            {
+                Name = "|М|";
+                MaxPlace = 5;
+                passangers -= MaxPlace;
+            }
+        }
+    }
+}
