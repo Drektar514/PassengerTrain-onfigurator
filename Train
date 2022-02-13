@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+
+namespace PassengerTrainСonfigurator
+{
+
+ class Train
+    {
+        private Vagon _vagon = new Vagon();
+        private List<Vagon> _vagons = new List<Vagon>();
+        private string _startStation;
+        private string _endStation;
+        Random _randomPassangers = new Random(); 
+        public void CreateDirection()
+        {
+            Console.Write("Введите станцию отправления поезда: ");
+            _startStation = Console.ReadLine();
+            Console.Write("Введите конечную станцию поезда: ");
+            _endStation = Console.ReadLine();
+        }
+        public void SellTickets(ref int passangers)
+        {
+            passangers = _randomPassangers.Next(10, 500);
+        }
+        public void BuildTrain(int passangers)
+        {
+            while (passangers > 0) {
+                _vagon.RendererVagon(ref passangers);
+                _vagons.Add(new Vagon(_vagon.Name, _vagon.MaxPlace));
+            }
+        }
+        public void ShowTrainInfo()
+        {
+            Console.Write($"{_startStation} - {_endStation} ");
+            for (int i = 0; i <_vagons.Count; i++)
+            {
+                Console.Write(_vagons[i].Name);
+            }
+            Console.WriteLine();
+        }
+    }
+}
