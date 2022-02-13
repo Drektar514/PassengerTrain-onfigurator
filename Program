@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PassengerTrainСonfigurator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Train> trains = new List<Train>();
+            bool active = true;
+            int passangers = 0;
+            while (active)
+            {
+                Train train = new Train();
+                if (trains.Count == 0)
+                {
+                    Console.WriteLine("Поезд отсутствует.");
+                }
+                else
+                {
+                    Console.Write("Сейчас в пути поезд: ");
+                    trains[trains.Count - 1].ShowTrainInfo();
+                }
+                train.CreateDirection();
+                train.SellTickets(ref passangers);
+                train.BuildTrain(passangers);
+                trains.Add(train);
+                Console.Clear();
+            }
+
+        }
+    }
+}
